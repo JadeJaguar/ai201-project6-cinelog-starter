@@ -81,7 +81,7 @@ class WatchlistEntry(db.Model):
     # "refactor: migrate film IDs from integer to UUID" change on main.
     film_id = db.Column(db.String(36), db.ForeignKey("film.id"), nullable=False)
     date_added = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
-    public = db.Column(db.Boolean, default=True)
+    public = db.Column(db.Boolean, default=False)
 
     __table_args__ = (
         db.UniqueConstraint("user_id", "film_id", name="unique_user_film_watchlist"),
